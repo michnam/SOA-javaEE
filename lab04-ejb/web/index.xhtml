@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:form>
+      <h:outputFormat>Username: </h:outputFormat>
+      <h:inputText value="#{login.username}"/> <br/>
+      <h:outputFormat>Password: </h:outputFormat>
+      <h:inputSecret value="#{login.password}"/> <br/>
+      <h:commandButton value="Login" action="#{login.login}"/>
+   </h:form>
+
+   <br/>
+   <br/>
+   <br/>
+   Accounts: <br/>
+   username: adam <br/>
+   password: 123 <br/> <br/>
+
+   username: maciek <br/>
+   password: 123 <br/> <br/>
+
+   username: andrzej <br/>
+   password: 123 <br/> <br/>
+</html>

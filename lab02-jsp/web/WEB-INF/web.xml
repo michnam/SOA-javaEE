@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <filter>
+        <filter-name>ageFilter</filter-name>
+        <filter-class>zad2.AgeFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ageFilter</filter-name>
+        <url-pattern>/zad2/form.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>ageFilter</filter-name>
+        <url-pattern>/zad2/form</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>Zad1</servlet-name>
+        <servlet-class>Zad1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WyborPiwa</servlet-name>
+        <servlet-class>zad2.WyborPiwa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>guestServlet</servlet-name>
+        <servlet-class>zad3.GuestServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Zad1</servlet-name>
+        <url-pattern>/liczby</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WyborPiwa</servlet-name>
+        <url-pattern>/zad2/piwo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>guestServlet</servlet-name>
+        <url-pattern>/zad3/ksiega-gosci</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <jsp-file>/zad3/login.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>login</servlet-name>
+        <url-pattern>/zad3/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>zad1</servlet-name>
+        <jsp-file>/zad1.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>zad1</servlet-name>
+        <url-pattern>/zad1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>form</servlet-name>
+        <jsp-file>/zad2/form.html</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>form</servlet-name>
+        <url-pattern>/zad2/form</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>
