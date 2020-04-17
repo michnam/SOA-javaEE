@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+
+</h:head>
+<h:body>
+
+    <h:form>
+        <h2>Additional Questions</h2>
+
+        <h:outputLabel for="clothesMoney" value="Monthly spendings on clothes: " /> <br/>
+        <h:selectOneMenu id="clothesMoney" value="#{surveyBean.clothesMoney}">
+            <f:selectItem itemValue="under 100 PLN" itemLabel="under 100 PLN" />
+            <f:selectItem itemValue="100 - 500 PLN" itemLabel="100 - 500 PLN" />
+            <f:selectItem itemValue="500 - 1000 PLN" itemLabel="500 - 1000 PLN" />
+            <f:selectItem itemValue="above 1000 PLN" itemLabel="above 1000 PLN" />
+        </h:selectOneMenu> <br/>
+        <span style = "color : red"> <h:message for="clothesMoney" /><br/><br/></span>
+
+        <h:outputLabel for="buyingFreq" value="Frequency of buying clothes: " /> <br/>
+        <h:selectOneMenu id="buyingFreq" value="#{surveyBean.buyingFreq}">
+            <f:selectItem itemValue="Everyday" itemLabel="Everyday" />
+            <f:selectItem itemValue="Once a week" itemLabel="Once a week" />
+            <f:selectItem itemValue="Once a mouth" itemLabel="Once a mouth" />
+            <f:selectItem itemValue="Few times a year" itemLabel="Few times a year" />
+        </h:selectOneMenu> <br/>
+        <span style = "color : red"> <h:message for="buyingFreq" /><br/><br/></span>
+
+
+        <h:outputLabel for="color" value="Favorite color: " /> <br/>
+        <h:selectOneMenu id="color" value="#{surveyBean.color}">
+            <f:selectItem itemValue="Bright colors" itemLabel="Bright colors" />
+            <f:selectItem itemValue="Pastel colors" itemLabel="Pastel colors" />
+            <f:selectItem itemValue="Gray" itemLabel="Gray"/>
+            <f:selectItem itemValue="White" itemLabel="White"/>
+            <f:selectItem itemValue="Black" itemLabel="Black"/>
+            <f:selectItem itemValue="Bronze" itemLabel="Bronze"/>
+        </h:selectOneMenu> <br/>
+        <span style = "color : red"> <h:message for="color" /><br/><br/></span>
+
+        <c:choose>
+            <c:when test="#{surveyBean.gender==null}">
+
+            </c:when>
+            <c:when test="#{surveyBean.gender.equals('Male')}">
+                <h:outputLabel for="clothesType" value="Favorite clothes type:" /> <br/>
+                <h:selectManyCheckbox id="clothesType" value="#{surveyBean.clothesType}">
+                    <f:selectItem itemValue="Trousers" itemLabel="Trousers" />
+                    <f:selectItem itemValue="Shorts" itemLabel="Shorts" />
+                    <f:selectItem itemValue="Suits" itemLabel="Suits" />
+                    <f:selectItem itemValue="Shirts" itemLabel="Shirts" />
+                    <f:selectItem itemValue="Ties" itemLabel="Ties" />
+                </h:selectManyCheckbox>
+                <br/>
+                <span style = "color : red"> <h:message for="clothesType" /><br/><br/></span>
+            </c:when>
+
+            <c:otherwise>
+                <h:outputLabel for="clothesTypeW" value="Favorite clothes type:" /> <br/>
+                <h:selectManyCheckbox id="clothesTypeW" value="#{surveyBean.clothesType}">
+                    <f:selectItem itemValue="Suits" itemLabel="Suits" />
+                    <f:selectItem itemValue="Blouses" itemLabel="Blouses" />
+                    <f:selectItem itemValue="Skirts" itemLabel="Skirts" />
+                    <f:selectItem itemValue="Trousers" itemLabel="Trousers" />
+                </h:selectManyCheckbox>
+                <br/>
+                <span style = "color : red"> <h:message for="clothesTypeW" /><br/><br/></span>
+            </c:otherwise>
+        </c:choose>
+
+        <h:commandButton value="Send" action="summary">
+            <f:actionListener binding="#{surveyBean.summaryMaker()}"/>
+        </h:commandButton>
+    </h:form>
+
+</h:body>
+</html>

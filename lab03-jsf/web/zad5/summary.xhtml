@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+
+</h:head>
+<h:body>
+    <h1>Summary</h1>
+    Full Name:  <h:outputFormat value="#{surveyBean.fullName}"/> <br/>
+    Email:      <h:outputFormat value="#{surveyBean.email}" /> <br/>
+    Age:        <h:outputFormat value="#{surveyBean.age}" /> <br/>
+    Gender:     <h:outputFormat value="#{surveyBean.gender}" /> <br/>
+    Education:  <h:outputFormat value="#{surveyBean.education}" /> <br/>
+    Height:     <h:outputFormat value="#{surveyBean.height}" /> <br/>
+
+    <c:choose>
+        <c:when test="#{surveyBean.gender.equals('Male')}">
+            Chest Circuit:      <h:outputFormat value="#{surveyBean.menChest}" /> <br/>
+            Waist Circuit:      <h:outputFormat value="#{surveyBean.menWaist}" /> <br/>
+        </c:when>
+        <c:otherwise>
+            Bust Circuit:       <h:outputFormat value="#{surveyBean.womenBust}" /> <br/>
+            Cup size:           <h:outputFormat value="#{surveyBean.womenCup}" /> <br/>
+            Waist Circuit:      <h:outputFormat value="#{surveyBean.womenWaist}" /> <br/>
+            Hips Circuit:       <h:outputFormat value="#{surveyBean.womenHips}" /> <br/>
+        </c:otherwise>
+    </c:choose>
+
+    <div>Monthly spendings on clothes:          <h:outputFormat value="#{surveyBean.clothesMoney}" /> <br/> </div>
+    <div>Frequency of buying clothes:           <h:outputFormat value="#{surveyBean.buyingFreq}" /> <br/>  </div>
+    <div>Favorite color:                        <h:outputFormat value="#{surveyBean.color}" /> <br/>  </div>
+    <div>Favorite clothes type:                 <h:outputFormat value="#{surveyBean.summaryClothesType}" /> <br/>  </div>
+
+
+</h:body>
+</html>

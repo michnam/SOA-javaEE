@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <h:outputStylesheet library="css" name="table-style.css"  />
+    </h:head>
+
+    <h:body>
+        <h:form>
+            <h:dataTable id="mainTable" value="#{catalogBean.allBooks}" var="book">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputFormat>#{book.id}</h:outputFormat>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Title</f:facet>
+                    <h:outputFormat>#{book.title}</h:outputFormat>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Author name</f:facet>
+                    <h:outputFormat>#{book.authorName}</h:outputFormat>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Author surname</f:facet>
+                    <h:outputFormat>#{book.authorSurname}</h:outputFormat>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">ISBN</f:facet>
+                    <h:outputFormat>#{book.isbn}</h:outputFormat>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Publication year</f:facet>
+                    <h:outputFormat>#{book.publicationYear}</h:outputFormat>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Price</f:facet>
+                    <h:outputFormat>#{book.price}</h:outputFormat>
+                </h:column>
+
+                <h:column>
+                    <h:commandButton value="delete" update="@form" actionListener="#{catalogBean.deleteBook(book)}"/>
+                </h:column>
+
+                <h:column>
+                    <h:commandButton value="update" action="update-book">
+                        <f:param name="ibsn" value="#{book.isbn}" />
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+
+    <h:form>
+        <h:commandButton value="Add entry" action="add-entry"/>
+    </h:form>
+
+</html>

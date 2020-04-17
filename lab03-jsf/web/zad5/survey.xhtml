@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+
+</h:head>
+
+<h:body>
+    <h2>Survey</h2>
+
+    <h:form id="mainForm">
+        <h:outputFormat>Full Name</h:outputFormat> <br/>
+        <h:inputText id="name" value="#{surveyBean.fullName}" required="true" requiredMessage="Value is required"/>
+        <span style = "color : red"> <h:message for="name" /><br/><br/></span>
+
+
+        <h:outputFormat >E-mail</h:outputFormat> <br/>
+        <h:inputText id="email" value="#{surveyBean.email}" required="true" requiredMessage="Value is required">
+            <f:validator validatorId="emailValidator" />
+        </h:inputText> <span style = "color : red"> <h:message for="email" /><br/><br/></span>
+
+        <h:outputFormat>Age</h:outputFormat> <br/>
+        <h:inputText id="age" value="#{surveyBean.age}" required="true" requiredMessage="Value is required" validatorMessage="Your age must be in range 10-100">
+            <f:validateDoubleRange minimum="10" maximum="100" for="age"/>
+        </h:inputText> <span style = "color : red"> <h:message for="age" /><br/><br/></span>
+
+        <h:outputFormat>Gender</h:outputFormat> <br/>
+        <h:selectOneRadio id="genderRadio" value="#{surveyBean.gender}" required="true" requiredMessage="Value is required">
+            <f:selectItem itemValue="Male" itemLabel="Male" />
+            <f:selectItem itemValue="Female" itemLabel="Female" />
+            <f:ajax event="click" render="femaleQuestions maleQuestions" />
+        </h:selectOneRadio> <span style = "color : red"> <h:message for="genderRadio" /><br/><br/></span>
+
+        <h:outputFormat>Education</h:outputFormat> <br/>
+        <h:selectOneRadio id="edu" value="#{surveyBean.education}" required="true" requiredMessage="Value is required">
+            <f:selectItem itemValue="Primary" itemLabel="Primary" />
+            <f:selectItem itemValue="Middle" itemLabel="Middle" />
+            <f:selectItem itemValue="Higher" itemLabel="Higher" />
+        </h:selectOneRadio> <span style = "color : red"> <h:message for="edu" /><br/><br/></span>
+
+        <h:outputFormat>Height</h:outputFormat> <br/>
+        <h:inputText id="heig" value="#{surveyBean.height}" required="true" requiredMessage="Value is required" >
+            <f:attribute name="gender" value="#{surveyBean.gender}" />
+            <f:validator validatorId="heightValidator" />
+        </h:inputText> <span style = "color : red"> <h:message for="heig" /><br/><br/></span>
+
+        <h:panelGroup id="maleQuestions">
+            <h:panelGroup  layout="block" rendered="#{surveyBean.gender.equals('Male')}">
+                <h3>Male Questions</h3>
+                <h:outputFormat>Chest Circuit</h:outputFormat> <br/>
+                <h:inputText id="chest" value="#{surveyBean.menChest}" required="true" requiredMessage="Value is required"/> <span style = "color : red"> <h:message for="chest" /><br/><br/></span>
+
+                <h:outputFormat>Waist Circuit</h:outputFormat> <br/>
+                <h:inputText id="waistM" value="#{surveyBean.menWaist}" required="true" requiredMessage="Value is required"/> <span style = "color : red"> <h:message for="waistM" /><br/><br/></span>
+            </h:panelGroup>
+        </h:panelGroup>
+
+        <h:panelGroup id="femaleQuestions" >
+            <h:panelGroup layout="block" rendered="#{surveyBean.gender.equals('Female')}">
+                <h3>Female Questions</h3>
+                <h:outputFormat>Bust Circuit</h:outputFormat> <br/>
+                <h:inputText id="bust" value="#{surveyBean.womenBust}" required="true" requiredMessage="Value is required"/> <span style = "color : red"> <h:message for="bust" /><br/><br/></span>
+
+                <h:outputFormat>Cup size</h:outputFormat> <br/>
+                <h:inputText id="cup" value="#{surveyBean.womenCup}" required="true" requiredMessage="Value is required"/> <span style = "color : red"> <h:message for="cup" /><br/><br/></span>
+
+                <h:outputFormat>Waist Circuit</h:outputFormat> <br/>
+                <h:inputText id="waistW" value="#{surveyBean.womenWaist}" required="true" requiredMessage="Value is required"/> <span style = "color : red"> <h:message for="waistW" /><br/><br/></span>
+
+                <h:outputFormat>Hips Circuit</h:outputFormat> <br/>
+                <h:inputText  id="hips" value="#{surveyBean.womenHips}" required="true" requiredMessage="Value is required"/> <span style = "color : red"> <h:message for="hips" /><br/><br/></span>
+            </h:panelGroup>
+        </h:panelGroup>
+
+
+
+
+        <h:commandButton value="Send" action="additional-questions"/>
+    </h:form>
+
+    <h:form>
+        <br/> <br/> Ad clicks:
+        <h:outputFormat id="counter" value="#{adBean.clickCounter}"/> <br/>
+
+        <h:commandLink action="#{adBean.adRedirect}">
+            <h:graphicImage value="#{adBean.randomAd()}" height="100"/>
+        </h:commandLink> <br/>
+    </h:form>
+
+
+</h:body>
+</html>
