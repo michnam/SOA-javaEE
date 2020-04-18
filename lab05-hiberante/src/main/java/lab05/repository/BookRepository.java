@@ -31,12 +31,11 @@ public class BookRepository
     {
         try
         {
-            Query query = entityManager.createQuery("from Book where isbn=:isbn").setParameter("isbn",isbn);
+            Query query = entityManager.createQuery("from Book where isbn=:isbn").setParameter("isbn", isbn);
             List<Book> res = query.getResultList();
             if(res.isEmpty()) throw new NoResultException("Book not found with isbn " + isbn);
             return res.get(0);
-        }
-        catch(Exception e)
+        } catch(Exception e)
         {
             throw new NoResultException("Book not found with isbn " + isbn);
         }
@@ -50,8 +49,7 @@ public class BookRepository
             entityManager.getTransaction().begin();
             entityManager.remove(tmp);
             entityManager.getTransaction().commit();
-        }
-        catch(Exception e)
+        } catch(Exception e)
         {
             System.out.println("Couldn't remove book");
             entityManager.getTransaction().rollback();
@@ -67,8 +65,7 @@ public class BookRepository
             entityManager.getTransaction().begin();
             entityManager.persist(book);
             entityManager.getTransaction().commit();
-        }
-        catch(Exception e)
+        } catch(Exception e)
         {
             System.out.println("Couldn't add book");
             entityManager.getTransaction().rollback();
@@ -78,7 +75,6 @@ public class BookRepository
     public void updateBook(int id, String title, String name, String surname, String isbn, int year, double price)
     {
         Book foundBook = entityManager.find(Book.class, id);
-        System.out.println(foundBook);
         try
         {
             entityManager.getTransaction().begin();
@@ -89,8 +85,7 @@ public class BookRepository
             foundBook.setPublicationYear(year);
             foundBook.setPrice(price);
             entityManager.getTransaction().commit();
-        }
-        catch(Exception e)
+        } catch(Exception e)
         {
             System.out.println("Couldn't update book");
             entityManager.getTransaction().rollback();

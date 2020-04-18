@@ -53,7 +53,7 @@ public class CatalogBean implements Serializable
 
     public String newBook()
     {
-        bookRepository.addBook(addTitle,addName,addSurname,addIsbn,addYear,addPrice);
+        bookRepository.addBook(addTitle, addName, addSurname, addIsbn, addYear, addPrice);
         addTitle = "";
         addName = "";
         addSurname = "";
@@ -72,15 +72,15 @@ public class CatalogBean implements Serializable
 
     public String updateBookPage(int updateId, String updateTitle, String updateName, String updateSurname, String updateIsbn, int updateYear, double updatePrice)
     {
-         this.updateId = updateId;
-         this.updateTitle = updateTitle;
-         this.updateName = updateName;
-         this.updateSurname = updateSurname;
-         this.updateIsbn = updateIsbn;
-         this.updateYear = updateYear;
-         this.updatePrice = updatePrice;
+        this.updateId = updateId;
+        this.updateTitle = updateTitle;
+        this.updateName = updateName;
+        this.updateSurname = updateSurname;
+        this.updateIsbn = updateIsbn;
+        this.updateYear = updateYear;
+        this.updatePrice = updatePrice;
 
-         return "update-book";
+        return "update-book";
     }
 
 
