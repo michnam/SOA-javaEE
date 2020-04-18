@@ -12,7 +12,10 @@
 
     <h:body>
         <h:form>
-            <h:dataTable id="mainTable" value="#{catalogBean.allBooks}" var="book">
+            <h:dataTable id="mainTable" value="#{catalogBean.allBooks}" var="book"
+                         styleClass="order-table"
+                         headerClass="order-table-header"
+                         rowClasses="order-table-odd-row,order-table-even-row">
                 <h:column>
                     <f:facet name="header">ID</f:facet>
                     <h:outputFormat>#{book.id}</h:outputFormat>
@@ -53,9 +56,20 @@
                 </h:column>
 
                 <h:column>
-                    <h:commandButton value="update" action="update-book">
-                        <f:param name="ibsn" value="#{book.isbn}" />
+                    <h:commandButton value="update" action="#{catalogBean.updateBookPage(book.id, book.title, book.authorName, book.authorSurname,book.isbn, book.publicationYear, book.price)}">
+
                     </h:commandButton>
+<!--                    <h:commandButton value="update" action="update-book">-->
+
+<!--                        <f:param name="id" value="#{book.id}" />-->
+<!--                        <f:param name="title" value="#{book.title}" />-->
+<!--                        <f:param name="authorName" value="#{book.authorName}" />-->
+<!--                        <f:param name="authorSurname" value="#{book.authorSurname}" />-->
+<!--                        <f:param name="isbn" value="#{book.isbn}" />-->
+<!--                        <f:param name="publicationYear" value="#{book.publicationYear}" />-->
+<!--                        <f:param name="price" value="#{book.price}" />-->
+
+<!--                    </h:commandButton>-->
                 </h:column>
             </h:dataTable>
         </h:form>

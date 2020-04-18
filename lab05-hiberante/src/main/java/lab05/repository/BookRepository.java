@@ -18,6 +18,7 @@ public class BookRepository
     public List<Book> findAll()
     {
         Query query = entityManager.createQuery("from Book");
+        List<Book> list = query.getResultList();
         return query.getResultList();
     }
 
@@ -58,8 +59,41 @@ public class BookRepository
 
     }
 
-    public void addBook()
+    public void addBook(String title, String name, String surname, String isbn, int year, double price)
     {
+        Book book = new Book(title, name, surname, isbn, year, price);
+        try
+        {
+            entityManager.getTransaction().begin();
+            entityManager.persist(book);
+            entityManager.getTransaction().commit();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Couldn't add book");
+            entityManager.getTransaction().rollback();
+        }
+    }
 
+    public void updateBook(int id, String title, String name, String surname, String isbn, int year, double price)
+    {
+        Book foundBook = entityManager.find(Book.class, id);
+        System.out.println(foundBook);
+        try
+        {
+            entityManager.getTransaction().begin();
+            foundBook.setTitle(title);
+            foundBook.setAuthorName(name);
+            foundBook.setAuthorSurname(surname);
+            foundBook.setIsbn(isbn);
+            foundBook.setPublicationYear(year);
+            foundBook.setPrice(price);
+            entityManager.getTransaction().commit();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Couldn't update book");
+            entityManager.getTransaction().rollback();
+        }
     }
 }

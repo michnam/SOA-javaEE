@@ -10,22 +10,21 @@
 </h:head>
 
 <h:body>
-    Editing book with ibsm <h:outputFormat>#{param.get('ibsn')}</h:outputFormat>
     <h:form>
         Title: <br/>
-        <h:inputText value="#{catalogBean.addTitle}"/> <br/>
+        <h:inputText value="#{catalogBean.updateTitle}"/> <br/>
         Author name: <br/>
-        <h:inputText value="#{catalogBean.addName}"/> <br/>
+        <h:inputText value="#{catalogBean.updateName}"/> <br/>
         Author surname: <br/>
-        <h:inputText value="#{catalogBean.addSurname}"/> <br/>
+        <h:inputText value="#{catalogBean.updateSurname}"/> <br/>
         ISBN: <br/>
-        <h:inputText value="#{catalogBean.addIsbn}"/> <br/>
+        <h:inputText value="#{catalogBean.updateIsbn}"/> <br/>
         Publication year: <br/>
-        <h:inputText value="#{catalogBean.addYear}"/> <br/>
+        <h:inputText value="#{catalogBean.updateYear}"/> <br/>
         Price: <br/>
-        <h:inputText value="#{catalogBean.addPrice}"/> <br/>
+        <h:inputText value="#{catalogBean.updatePrice}"/> <br/>
 
-        <h:commandButton value="Add" action="#{catalogBean.updateBook()}"/>
+        <h:commandButton value="Update" action="#{catalogBean.updateBook()}"/>
     </h:form>
 </h:body>
 </html>
