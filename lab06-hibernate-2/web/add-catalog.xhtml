@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:H="http://java.sun.com/jsf/html">
+    <h:head>
+    </h:head>
+
+    <h:body>
+        <h1>Add Catalog entry</h1>
+
+        <h:form>
+            Book: <br/>
+            <h:selectOneMenu value="#{catalogBean.chosenBook}">
+                <f:selectItems value="#{catalogBean.books}"/>
+            </h:selectOneMenu> <br/> <br/>
+
+            Condition: <br/>
+            <h:selectOneMenu value="#{catalogBean.toAdd.condition}">
+                <f:selectItem itemValue="#{1}"/>
+                <f:selectItem itemValue="#{2}"/>
+                <f:selectItem itemValue="#{3}"/>
+                <f:selectItem itemValue="#{4}"/>
+                <f:selectItem itemValue="#{5}"/>
+                <f:selectItem itemValue="#{6}"/>
+                <f:selectItem itemValue="#{7}"/>
+                <f:selectItem itemValue="#{8}"/>
+                <f:selectItem itemValue="#{9}"/>
+            </h:selectOneMenu> <br/> <br/>
+
+            <h:commandButton value="Add" action="#{catalogBean.addCatalog()}"/>
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:head>
+      <h:outputStylesheet library="css" name="table-style.css"/>
+   </h:head>
+
+   <h:body>
+
+      <h:form>
+         <h:commandButton value="Manage catalog" action="catalog"/>
+      </h:form>
+
+      <h1>Borrowings</h1>
+
+      <h:form>
+         <h:dataTable id="mainTable" value="#{rentalBean.allRental}" var="rental"
+                      styleClass="order-table"
+                      headerClass="order-table-header"
+                      rowClasses="order-table-odd-row,order-table-even-row">
+
+            <h:column>
+               <f:facet name="header">Rental ID</f:facet>
+               <h:outputFormat>#{rental.id}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Catalog ID</f:facet>
+               <h:outputFormat>#{rental.catalog.id}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Title</f:facet>
+               <h:outputFormat>#{rental.catalog.book.title}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Author</f:facet>
+               <h:outputFormat>#{rental.catalog.book.author.toString()}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">User</f:facet>
+               <h:outputFormat>#{rental.user.toString()}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Borrow date</f:facet>
+               <h:outputFormat>#{rental.rentDate}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Return date</f:facet>
+               <h:outputFormat>#{rental.returnDate}</h:outputFormat>
+            </h:column>
+
+
+         </h:dataTable>
+      </h:form>
+
+      <h:form>
+         <h:commandButton value="Add entry" action="add-rental"/>
+      </h:form>
+
+
+   </h:body>
+</html>
