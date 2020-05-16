@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
 
 </h:head>
@@ -14,6 +15,23 @@
 
     <h:form>
 
+        Book: <br/>
+        <h:selectOneMenu value="#{catalogBean.chosenBook}">
+            <f:selectItems value="#{catalogBean.books}"/>
+        </h:selectOneMenu> <br/> <br/>
+
+        Condition: <br/>
+        <h:selectOneMenu value="#{catalogBean.toUpdate.condition}">
+            <f:selectItem itemValue="#{1}"/>
+            <f:selectItem itemValue="#{2}"/>
+            <f:selectItem itemValue="#{3}"/>
+            <f:selectItem itemValue="#{4}"/>
+            <f:selectItem itemValue="#{5}"/>
+            <f:selectItem itemValue="#{6}"/>
+            <f:selectItem itemValue="#{7}"/>
+            <f:selectItem itemValue="#{8}"/>
+            <f:selectItem itemValue="#{9}"/>
+        </h:selectOneMenu> <br/> <br/>
 
         <h:commandButton value="Update" action="#{catalogBean.updateCatalog()}"/>
     </h:form>

@@ -18,8 +18,8 @@ public class User
     @Column(name = "user_surname")
     private String userSurname;
 
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL})
-    private List<Rental> rentalList;
+    @OneToMany(mappedBy = "user")
+    private List<Borrow> borrowList;
 
     public User()
     {
@@ -34,7 +34,7 @@ public class User
     @Override
     public String toString()
     {
-        return userName + " " + userSurname;
+        return "id: " + id + " , " + userName + " " + userSurname;
     }
 
     public int getId()
@@ -67,13 +67,13 @@ public class User
         this.userSurname = userSurname;
     }
 
-    public List<Rental> getRentalList()
+    public List<Borrow> getBorrowList()
     {
-        return rentalList;
+        return borrowList;
     }
 
-    public void setRentalList(List<Rental> rentalList)
+    public void setBorrowList(List<Borrow> borrowList)
     {
-        this.rentalList = rentalList;
+        this.borrowList = borrowList;
     }
 }

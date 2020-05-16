@@ -22,6 +22,11 @@ public class CatalogDAO
         return  query.getResultList();
     }
 
+    public Catalog findById(int id)
+    {
+        return em.find(Catalog.class, id);
+    }
+
     public void addCatalog(Catalog toAdd)
     {
         try

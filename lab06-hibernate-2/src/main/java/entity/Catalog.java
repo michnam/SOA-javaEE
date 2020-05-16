@@ -16,10 +16,14 @@ public class Catalog
     @JoinColumn(name = "id_book")
     private Book book;
 
+    @Column(name = "book_condition")
     private int condition;
 
     @OneToMany(mappedBy = "catalog")
-    private List<Rental> rentalList;
+    private List<Borrow> borrowList;
+
+    @Version
+    private int version;
 
     public Catalog()
     {
@@ -29,6 +33,13 @@ public class Catalog
     {
         this.book = book;
         this.condition = condition;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "id: " + id + " , " + book.getTitle() + ", " + book
+                .getAuthor() + ", " + book.getCategory();
     }
 
     public int getId()
@@ -61,13 +72,13 @@ public class Catalog
         this.book = book;
     }
 
-    public List<Rental> getRentalList()
+    public List<Borrow> getBorrowList()
     {
-        return rentalList;
+        return borrowList;
     }
 
-    public void setRentalList(List<Rental> rentalList)
+    public void setBorrowList(List<Borrow> borrowList)
     {
-        this.rentalList = rentalList;
+        this.borrowList = borrowList;
     }
 }

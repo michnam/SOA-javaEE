@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet library="css" name="table-style.css"/>
+</h:head>
+<h:body>
+    <h1> Users, who read  <h:outputFormat>#{borrowBean.selectedBook} between #{borrowBean.startDate} and #{borrowBean.stopDate}</h:outputFormat></h1>
+    <h:form>
+        <h:dataTable id="mainTable" value="#{borrowBean.add2}" var="u"
+                     styleClass="order-table"
+                     headerClass="order-table-header"
+                     rowClasses="order-table-odd-row,order-table-even-row">
+
+            <h:column>
+                <f:facet name="header">User ID</f:facet>
+                <h:outputFormat>#{u.id}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">name</f:facet>
+                <h:outputFormat>#{u.userName}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">surname</f:facet>
+                <h:outputFormat>#{u.userSurname}</h:outputFormat>
+            </h:column>
+
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>

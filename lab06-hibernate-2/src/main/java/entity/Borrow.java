@@ -5,18 +5,18 @@ import java.sql.Date;
 
 
 @Entity
-@Table(name = "rental", schema = "soalab06")
-public class Rental
+@Table(name = "borrow", schema = "soalab06")
+public class Borrow
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne
     @JoinColumn(name = "id_catalog")
     private Catalog catalog;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne
     @JoinColumn(name = "id_user")
     private User user;
 
@@ -26,11 +26,14 @@ public class Rental
     @Column(name = "return_date")
     private Date returnDate;
 
-    public Rental()
+    @Version
+    private int version;
+
+    public Borrow()
     {
     }
 
-    public Rental(int id, Catalog catalog, User user, Date rentDate, Date returnDate)
+    public Borrow(int id, Catalog catalog, User user, Date rentDate, Date returnDate)
     {
         this.id = id;
         this.catalog = catalog;
@@ -42,7 +45,7 @@ public class Rental
     @Override
     public String toString()
     {
-        return "Rental{" +
+        return "Borrow{" +
                 "id=" + id +
                 ", catalog=" + catalog +
                 ", user=" + user +

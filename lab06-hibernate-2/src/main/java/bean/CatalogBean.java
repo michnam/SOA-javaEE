@@ -6,7 +6,6 @@ import entity.Book;
 import entity.Catalog;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -36,13 +35,13 @@ public class CatalogBean implements Serializable
 
     public String goUpdate(Catalog catalog)
     {
+        chosenBook = catalog.getBook().toString();
         toUpdate = catalog;
         return "update-catalog";
     }
 
     public String addCatalog()
     {
-
         String isbn = chosenBook.split(" ")[1];
         toAdd.setBook(bookDAO.findByIsbn(isbn));
         catalogDAO.addCatalog(toAdd);
@@ -51,6 +50,8 @@ public class CatalogBean implements Serializable
 
     public String updateCatalog()
     {
+        String isbn = chosenBook.split(" ")[1];
+        toUpdate.setBook(bookDAO.findByIsbn(isbn));
         catalogDAO.updateCatalog(toUpdate);
         return "catalog";
     }

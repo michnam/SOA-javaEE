@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
    <h:head>
       <h:outputStylesheet library="css" name="table-style.css"/>
    </h:head>
@@ -18,44 +19,52 @@
       <h1>Borrowings</h1>
 
       <h:form>
-         <h:dataTable id="mainTable" value="#{rentalBean.allRental}" var="rental"
+         <h:dataTable id="mainTable" value="#{borrowBean.allRental}" var="borrow"
                       styleClass="order-table"
                       headerClass="order-table-header"
                       rowClasses="order-table-odd-row,order-table-even-row">
 
             <h:column>
-               <f:facet name="header">Rental ID</f:facet>
-               <h:outputFormat>#{rental.id}</h:outputFormat>
+               <f:facet name="header">Borrow ID</f:facet>
+               <h:outputFormat>#{borrow.id}</h:outputFormat>
             </h:column>
 
             <h:column>
                <f:facet name="header">Catalog ID</f:facet>
-               <h:outputFormat>#{rental.catalog.id}</h:outputFormat>
+               <h:outputFormat>#{borrow.catalog.id}</h:outputFormat>
             </h:column>
 
             <h:column>
                <f:facet name="header">Title</f:facet>
-               <h:outputFormat>#{rental.catalog.book.title}</h:outputFormat>
+               <h:outputFormat>#{borrow.catalog.book.title}</h:outputFormat>
             </h:column>
 
             <h:column>
                <f:facet name="header">Author</f:facet>
-               <h:outputFormat>#{rental.catalog.book.author.toString()}</h:outputFormat>
+               <h:outputFormat>#{borrow.catalog.book.author.toString()}</h:outputFormat>
             </h:column>
 
             <h:column>
                <f:facet name="header">User</f:facet>
-               <h:outputFormat>#{rental.user.toString()}</h:outputFormat>
+               <h:outputFormat>#{borrow.user.toString()}</h:outputFormat>
             </h:column>
 
             <h:column>
                <f:facet name="header">Borrow date</f:facet>
-               <h:outputFormat>#{rental.rentDate}</h:outputFormat>
+               <h:outputFormat>#{borrow.rentDate}</h:outputFormat>
             </h:column>
 
             <h:column>
                <f:facet name="header">Return date</f:facet>
-               <h:outputFormat>#{rental.returnDate}</h:outputFormat>
+               <h:outputFormat>#{borrow.returnDate}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+               <h:commandButton value="update" action="#{borrowBean.goUpdate(borrow)}"/>
+            </h:column>
+
+            <h:column>
+               <h:commandButton value="delete" update="@form" actionListener="#{borrowBean.deleteBorrow(borrow)}"/>
             </h:column>
 
 
@@ -63,7 +72,56 @@
       </h:form>
 
       <h:form>
-         <h:commandButton value="Add entry" action="add-rental"/>
+         <h:commandButton value="Add entry" action="#{borrowBean.goAdd()}"/>
+      </h:form>
+
+
+      <br/> <br/>
+      <h:form>
+         Users, who borrowed books wirtten by
+         <h:selectOneMenu value="#{borrowBean.selectedAuthor}">
+            <f:selectItems value="#{borrowBean.allAuthors}" />
+         </h:selectOneMenu>
+         between
+         <h:inputText value="#{borrowBean.startDate}" pt:placeholder="YYYY-MM-DD"/>
+         and
+         <h:inputText value="#{borrowBean.stopDate}" pt:placeholder="YYYY-MM-DD"/>
+
+         <h:commandButton value="Show" action="#{borrowBean.additional1()}"/>
+      </h:form>
+
+      <br/> <br/>
+
+      <h:form>
+
+         Who read
+         <h:selectOneMenu value="#{borrowBean.selectedBook}">
+            <f:selectItems value="#{borrowBean.allBook}" />
+         </h:selectOneMenu>
+         between
+         <h:inputText value="#{borrowBean.startDate}" pt:placeholder="YYYY-MM-DD" />
+         and
+         <h:inputText value="#{borrowBean.stopDate}" pt:placeholder="YYYY-MM-DD" />
+
+         <h:commandButton value="Show" action="#{borrowBean.additional2()}"/>
+      </h:form>
+
+      <br/> <br/>
+
+      <h:form>
+
+         Authors whose books were borrowed by
+         <h:selectOneMenu  value="#{borrowBean.selectedAuthor3}">
+            <f:selectItems value="#{borrowBean.allUser}" />
+         </h:selectOneMenu>
+         <h:commandButton value="Show" action="#{borrowBean.additional3()}"/>
+      </h:form>
+
+      <br/> <br/>
+
+      <h:form>
+         Mostly read author.
+         <h:commandButton value="Show" action="#{borrowBean.additional4()}"/>
       </h:form>
 
 

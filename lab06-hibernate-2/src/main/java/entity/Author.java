@@ -33,7 +33,7 @@ public class Author
     @Override
     public String toString()
     {
-        return authorName + " " + authorSurname;
+        return "id: " + id + " , " + authorName + " " + authorSurname;
     }
 
     public int getId()
