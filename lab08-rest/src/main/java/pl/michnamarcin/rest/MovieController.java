@@ -34,10 +34,10 @@ public class MovieController
     @POST
     @Produces("application/json")
     @Consumes("application/json")
-    @Path("/")
-    public Response addMovie(Movie movie)
+    @Path("/{id}")
+    public Response addMovie(Movie movie, @PathParam("id") int id)
     {
-        MovieDAO.add(movie);
+        MovieDAO.add(movie, id);
         return Response.status(200).build();
     }
 
@@ -74,8 +74,8 @@ public class MovieController
 
     @GET
     @Produces("application/json")
-    @Path("/")
-    public Response getMoviesByTitle(@QueryParam("title") String title) {
+    @Path("/title/{title}")
+    public Response getMoviesByTitle(@PathParam("title") String title) {
         return Response.status(200)
                 .entity(MovieDAO.getMovieByTitle(title))
                 .build();

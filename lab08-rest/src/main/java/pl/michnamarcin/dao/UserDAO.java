@@ -8,23 +8,23 @@ import java.util.List;
 
 public class UserDAO
 {
-    //private static EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
+    private static EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
 
     public static List<User> findAll()
     {
-        EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
+        //EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
         return em.createQuery("from User").getResultList();
     }
 
     public static User findById(int id)
     {
-        EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
+        //EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
         return em.find(User.class, id);
     }
 
     public static void add(User toAdd)
     {
-        EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
+        //EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
         try
         {
             em.getTransaction().begin();
@@ -40,7 +40,7 @@ public class UserDAO
 
     public static void update(User updatedUser)
     {
-        EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
+        //EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
         User user = em.find(User.class, updatedUser.getId());
         try
         {
@@ -60,7 +60,7 @@ public class UserDAO
 
     public static void delete(int id)
     {
-        EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
+        //EntityManager em = Persistence.createEntityManagerFactory("soa").createEntityManager();
         try
         {
             User tmp = em.find(User.class, id);

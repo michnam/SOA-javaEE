@@ -5,7 +5,17 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-      <h:outputLabel value="Hello, world"/>
-   </f:view>
+<head>
+</head>
+<body>
+<h1>Update movie</h1>
+<h:form>
+    Title: <br/>
+    <h:inputText value="#{movieBean.toUpdate.title}"/> <br/> <br/>
+    Uri: <br/>
+    <h:inputText value="#{movieBean.toUpdate.uri}"/> <br/><br/>
+
+    <h:commandButton value="update" action="#{movieBean.updateMovie()}"/>
+</h:form>
+</body>
 </html>

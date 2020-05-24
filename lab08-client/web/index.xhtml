@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+   <h:head>
+      <h:outputStylesheet library="css" name="table-style.css"/>
+   </h:head>
+
+   <br/>
+   <h:form>
+      <h:commandButton value="Manage movies" action="movies"/>
+   </h:form>
+   <br/>
+   <br/>
+
+   <h1>Users</h1>
+   <h:body>
+      <h:form>
+         <h:dataTable id="mainTable" value="#{userBean.findAllUsers()}" var="user"
+                      styleClass="order-table"
+                      headerClass="order-table-header"
+                      rowClasses="order-table-odd-row,order-table-even-row">
+
+            <h:column>
+               <f:facet name="header">id</f:facet>
+               <h:outputFormat>#{user.id}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Username</f:facet>
+               <h:outputFormat>#{user.username}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Age</f:facet>
+               <h:outputFormat>#{user.age}</h:outputFormat>
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">Movies</f:facet>
+               <h:dataTable value="#{user.movies}" var="movie" styleClass="order-table"
+                            headerClass="order-table-header"
+                            rowClasses="order-table-odd-row,order-table-even-row" width="450px">
+                  <h:column>
+                     <f:facet name="header">id</f:facet>
+                     <h:outputFormat>#{movie.id}</h:outputFormat>
+                  </h:column>
+                  <h:column>
+                     <f:facet name="header">Title</f:facet>
+                     <h:outputFormat>#{movie.title}</h:outputFormat>
+                  </h:column>
+
+
+                  <h:column>
+                     <f:facet name="header">Uri</f:facet>
+                     <h:outputFormat>#{movie.uri}</h:outputFormat>
+                  </h:column>
+               </h:dataTable>
+            </h:column>
+
+            <h:column>
+               <h:commandButton value="update" action="#{userBean.goUpdate(user)}"/>
+            </h:column>
+
+
+            <h:column>
+               <h:commandButton value="delete" update="@form" actionListener="#{userBean.deleteUser(user)}"/>
+            </h:column>
+
+         </h:dataTable>
+      </h:form>
+
+      <br/>
+      <h:form>
+         <h:commandButton value="Add new user" action="add-user"/>
+      </h:form>
+   </h:body>
+</html>

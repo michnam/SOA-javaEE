@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.michnamarcin</groupId>
-    <artifactId>lab08-rest-client</artifactId>
+    <artifactId>lab08-client</artifactId>
     <version>1.0</version>
 
     <dependencies>
@@ -20,6 +20,7 @@
             <artifactId>resteasy-client</artifactId>
             <version>3.1.4.Final</version>
         </dependency>
+
     </dependencies>
 
 </project>
