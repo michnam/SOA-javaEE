@@ -141,3 +141,55 @@ Katalog zawiera następujące pozycje: nazwisko autora, imię, tytuł, numer ISB
 rok wydania, cena.
 
 Można wykorzystać warstwę prezentacyjna wykonaną w ramach lab 3.
+
+## LAB06 - Hibernate ##
+
+W oparciu o Hibernate samodzielnie zbudować aplikacje
+typu Biblioteka. Model danych powinien składać się z obiektów:
+Czytelnik, Książka, Autor, Kategorie, Katalog oraz Wypożyczenia.
+Czytelnik składa się z imienia, nazwiska. Książka to tytuł, id autora,
+numer ISBN, kategoria. Wypożyczenia przechowuje informacje o
+wypożyczonych książkach przez czytelnika. Składa się z id książki, id
+czytelnika oraz daty wypożyczenia i daty zwrotu. Katalog zawiera
+informacje o wszystkich instancjach książek dostępnych w naszej
+bibliotece – np. możemy mieć 10 egzemplarzy jakieś pozycji oraz
+zawiera informacje o jej aktualnym stanie
+Aplikacja umożliwia podgląd, dodawanie, usuwanie i modyfikacje
+poszczególnych pozycji katalogu bibliotecznego.
+Dodatkowo należy dorobić opcje pozwalające na wyszukiwanie
+bardziej zaawansowanych kryteriów wyszukiwania np.
+1. podaj wszystkich czytelników, którzy pożyczyli książki danego
+autora ( np. Sienkiewicza) w okresie od 1.01.2018 do 1.05.2018
+2. Kto przeczytał książkę „kapitan nemo” w podanym okresie czasu
+3. Wszystkich autorów, których książki pożyczył pan Jan Kowalski
+(ewentualnie w jakim okresie czasu)
+4. Jakiego autora czyta się najwięcej?
+
+## LAB08 - REST ##
+### REST ###
+W oparciu o wiedze z wykładu dotyczącą sposobu adresacji zasobów w REST API (poziom 2)
+zaimplementuj prostą aplikacje umożliwiającą dostęp do kolekcji osób oraz ich ulubionych filmów.
+Kolekcja może być przechowywana w bazie danych lub w pliku XML.
+Na potrzeby lab przyjmij następujące API RESTowe:
+o User opisany jest za pomocą: Id, imienia, wiek, awataru (w postaci grafiki) oraz jest
+właścicielem kolekcji filmów.
+o Pojedynczy film zawiera następujące pola: ‘id’: identyfikator, ‘title’: tytul ‘uri’: link
+do siebie
+
+Zaimplementuj komplet CRUD dla obu typów zasobów
+
+Filtrowanie po tytule
+
+Dopisz parametr ‘title’ do zasobu movies pozwalający wyszukać film po tytule. Upewnij się że
+parametr jest dodany do opisu usługi.
+
+Zaimplementuj metodę pozwalającą na modyfikacje tylko jednej wartości np. zmianę linku dla
+wybranego filmu.
+
+Utwórz zasób o URI ‘/osoby’, który spowoduje przekierowanie do /users. 
+
+Spróbuj zwrócić poprzez API REST dane binarne np. plik PNG (avatar usera).
+
+### Klient ###
+Napisz jako niezależną aplikację, aplikacje kliencką pozwalającą na zarządzanie kolekcją
+users i ich filmów. Wykorzystaj funkcjonalność klienta w RESTEasy.
